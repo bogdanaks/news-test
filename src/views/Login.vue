@@ -34,7 +34,7 @@ export default {
     },
     methods: {
         submitHandler: function() {
-            this.$store.dispatch('setAuth', this.user)
+            this.$store.dispatch('checkAuth', this.user)
         },
     }
 }
