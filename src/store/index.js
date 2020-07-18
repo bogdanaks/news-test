@@ -15,7 +15,15 @@ export default new Vuex.Store({
   },
   actions: {
     setAuth({commit}, value) {
-      commit('setAuth', value)
+      if(value.username === 'admin' && value.password === '12345') {
+        commit('setAuth', value)
+      } else {
+        this.dispatch('setError')
+      }
+    },
+    setError() {
+      // commit('setError')
+      M.toast({html: 'Username or password incorrect!'})
     }
   },
   getters: {
