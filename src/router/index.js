@@ -10,7 +10,7 @@ import store from '../store'
 Vue.use(VueRouter)
 
 const ifAuthenticated = (to, from, next) => {
-  if (store.getters.isAuthenticated) {
+  if (store.getters.isAuthenticated === 'true') {
     next()
     return
   }
