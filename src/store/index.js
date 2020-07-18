@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    auth: true
+    auth: false
   },
   mutations: {
     setAuth(state, value) {
@@ -14,15 +14,18 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    setAuth({commit}, value) {
+    checkAuth({commit}, value) {
+      console.log(value)
       if(value.username === 'admin' && value.password === '12345') {
-        commit('setAuth', value)
+        commit('setAuth', true)
       } else {
         this.dispatch('setError')
       }
     },
+    setAuth({commit}, value) {
+      commit('setAuth', value)
+    },
     setError() {
-      // commit('setError')
       M.toast({html: 'Username or password incorrect!'})
     }
   },
