@@ -13,10 +13,10 @@ const ifAuthenticated = (to, from, next) => {
   if (store.getters.isAuthenticated === 'true') {
     next()
     return
+  } else {
+    next('/login')
   }
-  next('/login')
 }
-
 const routes = [
   {
     path: '/',

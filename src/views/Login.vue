@@ -34,7 +34,9 @@ export default {
     },
     methods: {
         submitHandler: function() {
-            this.$store.dispatch('checkAuth', this.user)
+            this.$store.dispatch('checkAuth', this.user).then(() => {
+                this.$router.push('/profile')
+            })
         },
     }
 }

@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    auth: false
+    auth: localStorage.getItem('auth') || 'false'
   },
   mutations: {
     setAuth(state, value) {
@@ -14,13 +14,15 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    checkAuth({commit}, value) {
-      console.log(value)
-      if(value.username === 'admin' && value.password === '12345') {
-        commit('setAuth', true)
-      } else {
-        this.dispatch('setError')
-      }
+    checkAuth({commit}, value) {    
+      return new Promise((resolve, reject) => {
+        if(value.username === 'admin' && value.password === '12345') {
+          commit('setAuth', true)
+          resolve()
+        } else {
+          this.dispatch('setError')
+        }
+      })
     },
     setAuth({commit}, value) {
       commit('setAuth', value)
