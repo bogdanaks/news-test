@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Main from '../views/Main.vue'
 import News from '../views/News.vue'
+import Login from '../views/Login.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,11 @@ Vue.use(VueRouter)
     path: '/news',
     name: 'News',
     component: News
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
   },
 ]
 
