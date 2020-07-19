@@ -5,14 +5,21 @@
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <router-link to="/news" active-class="active" tag="li" exact><a>News</a></router-link>
                 <router-link to="/profile" active-class="active" tag="li" exact><a>Profile</a></router-link>
-                <li @click="exitHandler" v-if="this.$store.getters.isAuthenticated === 'true'"><a>Exit</a></li>
+                <li @click="exitHandler" v-if="auth"><a>Exit</a></li>
             </ul>
         </div>
     </nav>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
+    computed: {
+        ...mapGetters(['isAuthenticated']),
+        auth: function() {
+            return this.isAuthenticated === 'true' || this.isAuthenticated === true
+        }
+    },
     methods: {
         exitHandler: function() {
             this.$store.dispatch('setAuth', false)
