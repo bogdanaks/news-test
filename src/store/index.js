@@ -17,7 +17,6 @@ export default new Vuex.Store({
     checkAuth({commit}, value) {    
       return new Promise((resolve, reject) => {
         if(value.username === 'admin' && value.password === '12345') {
-          commit('setAuth', true)
           resolve()
         } else {
           this.dispatch('setError')
