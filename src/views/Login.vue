@@ -35,6 +35,7 @@ export default {
     methods: {
         submitHandler: function() {
             this.$store.dispatch('checkAuth', this.user).then(() => {
+                this.$store.dispatch('setAuth', true)
                 this.$router.push('/profile')
             })
         },
